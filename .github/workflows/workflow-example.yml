@@ -52,7 +52,7 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
       # Steps can be executed conditionally
       - name: Skipped conditional step
-        if: runner.os == 'Windows"
+        if: runner.os == 'Windows'
         run: echo this step won't run, it has been excluded!
       - run: |
           echo This is
