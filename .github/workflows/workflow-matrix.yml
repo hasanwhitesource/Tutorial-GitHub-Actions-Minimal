@@ -1,0 +1,48 @@
+name: A Matrix Workflow
+on:
+  push:
+    tags: '*'
+    branches-ignore:
+      - 'autodelivery**'
+      - 'bump-**'
+      - 'renovate/**'
+    paths-ignore: # Pushes that change only these file won't start the workflow
+      - 'README.md'
+      - 'CHANGELOG.md'
+      - 'LICENSE'
+  pull_request:
+    branches: # Only pull requests based on these branches will start the workflow
+      - master
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  Build:
+    strategy:
+      matrix:
+        os: [windows, macos, ubuntu]
+        jvm_version: [8, 11, 15, 16]
+        ruby_version: [2.7, 3.0]
+        python_version: [3.7, 3.9.7]
+    runs-on: ${{ matrix.os }}-latest
+    env:
+      JAVA_VERSION: ${{ matrix.jvm_version }}
+      OS: ${{ matrix.os }}
+      TERM: dumb
+    steps:
+      - uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt' # See 'Supported distributions' for available options
+          java-version: ${{ matrix.jvm_version }}    # Install the JDK
+      - uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python_version }}
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby_version }}
+      - shell: bash
+        run: java --version
+      - shell: bash
+        run: ruby --version
+      - shell: bash
+        run: python --version
