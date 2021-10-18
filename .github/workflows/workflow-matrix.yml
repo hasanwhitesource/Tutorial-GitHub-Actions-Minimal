@@ -41,7 +41,7 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby_version }}
       - shell: bash
-        run: java --version
+        run: java -version
       - shell: bash
         run: ruby --version
       - shell: bash
