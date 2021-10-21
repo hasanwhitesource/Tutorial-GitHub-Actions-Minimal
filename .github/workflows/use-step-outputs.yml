@@ -1,7 +1,5 @@
 name: Outputs
 on:
-  push:
-  pull_request:
   workflow_dispatch:
 jobs:
   Build:
