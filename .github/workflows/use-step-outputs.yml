@@ -16,8 +16,8 @@ jobs:
       - run: |
           echo "The dice roll resulted in number ${{ steps.output-from-shell.outputs.dice }}"
           if ${{ steps.branch-name.outputs.is_tag }} ; then
-            echo "This is tag ${{ steps.branch-name.outputs.tag }}
+            echo "This is tag ${{ steps.branch-name.outputs.tag }}"
           else
-            echo "This is branch ${{ steps.branch-name.outputs.current_branch }}
+            echo "This is branch ${{ steps.branch-name.outputs.current_branch }}"
             echo "Is this branch the default one? ${{ steps.branch-name.outputs.is_default }}"
           fi
