@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: danysk/action-checkout@0.1.0
       - id: branch-name # Custom id
-        uses: tj-actions/branch-names@v5 # An action that has some outputs
+        uses: tj-actions/branch-names@v5
       - id: output-from-shell
         run: ruby -e 'puts "::set-output name=dice::#{rand(1..6)}"'
       - run: |
