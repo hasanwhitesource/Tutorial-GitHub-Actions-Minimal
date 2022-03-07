@@ -30,7 +30,7 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: ${{ matrix.jvm_version }} # "${{ }}" contents are interpreted by the github actions runner
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v3
         with:
           python-version: ${{ matrix.python_version }} 
       - uses: ruby/setup-ruby@v1
